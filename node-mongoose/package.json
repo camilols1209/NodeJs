@@ -1,0 +1,15 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "test mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "author": "Jesus Lopez",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.1.7"
+  }
+}
