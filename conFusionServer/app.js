@@ -6,6 +6,7 @@ var logger = require('morgan');
 const mongoose = require('mongoose');  
 var passport = require('passport');
 var authenticate = require('./authenticate');
+var config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,8 +16,7 @@ var leaderRouter = require('./routes/leaderRouter');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var app = express();
-
-const url = 'mongodb://localhost:27017/conFusion';
+const url = config.mongoUrl;
 const connect = mongoose.connect(url,{useMongoCLient:true});
 
 connect.then((db) => {
