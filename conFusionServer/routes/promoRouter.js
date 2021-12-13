@@ -18,7 +18,7 @@ promoRouter.route('/')
 .post((req, res, next) => {
     Promos.create(req.body)
     .then((promos) => {
-        console.log('Leader Created ', dish);
+        console.log('Leader Created ', promos);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(promos);
