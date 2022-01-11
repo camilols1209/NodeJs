@@ -18,6 +18,7 @@ var FileStore = require('session-file-store')(session);
 var app = express();
 const url = config.mongoUrl;
 const connect = mongoose.connect(url,{useMongoCLient:true});
+// Secure traffic only
 
 connect.then((db) => {
   console.log("Connected correctly to server");
@@ -131,7 +132,14 @@ function auth (req, res, next) {
   }
 }*/
 
-
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  }
+  else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
 
 app.use(logger('dev'));
 app.use(express.json());
