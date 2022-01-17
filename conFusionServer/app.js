@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
+var favoriteRouter = require('./routes/favoriteRouter');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var app = express();
@@ -195,9 +196,10 @@ function auth (req, res, next) {
     }
   }
 }*/
-app.use(auth);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(auth);
 
+app.use('/favorites',favoriteRouter);
 app.use('/dishes',dishRouter);
 app.use('/promotions',promoRouter);
 app.use('/leaders',leaderRouter);
